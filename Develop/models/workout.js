@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const workout_db = new Schema(
+const wotracker_db = new Schema(
     {
       day: {
         type: Date,
@@ -45,12 +45,12 @@ const workout_db = new Schema(
     }
   );
 
-  workout_db.virtual("totalDuration").get(function () {
+  wotracker_db.virtual("totalDuration").get(function () {
     return this.exercises.reduce((total, exercise) => {
       return total + exercise.duration;
     }, 0);
   });
   
-  const Workout = mongoose.model("Workout", workout_db);
+  const Workout = mongoose.model("Workout", wotracker_db);
   
   module.exports = Workout;

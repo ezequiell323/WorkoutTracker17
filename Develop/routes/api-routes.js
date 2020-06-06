@@ -1,7 +1,7 @@
 const Workout = require("../models/workout")
 
 module.exports = function(app){ 
-    //find
+
     app.get("/api/workouts",function(req,res){  
         Workout.find()
         .then(data =>{  
@@ -20,7 +20,7 @@ module.exports = function(app){
             res.json(err)
         })
     });
-    //create
+    
     app.post("/api/workouts",function (req,res){    
         Workout.create({})
         .then(data => res.json(data))
@@ -35,7 +35,7 @@ module.exports = function(app){
             res.json(err)
         })
     });
-    //update
+    
     app.put("/api/workouts/:id",({body,params},res)=>{   
         Workout.findByIdAndUpdate(  
          params.id,
